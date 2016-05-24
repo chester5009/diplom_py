@@ -148,12 +148,12 @@
         </property>
         <item>
          <property name="text">
-          <string>Ввод с названием</string>
+          <string>Ручной ввод</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Только номера</string>
+          <string>Считать файл</string>
          </property>
         </item>
        </widget>
