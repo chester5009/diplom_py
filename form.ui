@@ -186,9 +186,6 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QTableView" name="tableView"/>
-      </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="pushButton_8">
         <property name="text">
@@ -209,6 +206,9 @@
          <string>Результат</string>
         </property>
        </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QTableWidget" name="tableWidget"/>
       </item>
      </layout>
     </widget>

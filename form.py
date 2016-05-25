@@ -2,7 +2,8 @@
 
 # Form implementation generated from reading ui file 'form.ui'
 #
-# Created by: PyQt4 UI code generator 4.11.4
+# Created: Wed May 25 20:46:19 2016
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,6 +36,7 @@ class Ui_Form(object):
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 110, 551, 621))
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.pushButton_2 = QtGui.QPushButton(self.verticalLayoutWidget)
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
@@ -55,6 +57,7 @@ class Ui_Form(object):
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(100, 70, 361, 631))
         self.verticalLayoutWidget_2.setObjectName(_fromUtf8("verticalLayoutWidget_2"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.label_2 = QtGui.QLabel(self.verticalLayoutWidget_2)
         self.label_2.setObjectName(_fromUtf8("label_2"))
@@ -75,6 +78,7 @@ class Ui_Form(object):
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(120, 230, 291, 191))
         self.verticalLayoutWidget_3.setObjectName(_fromUtf8("verticalLayoutWidget_3"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_3.setMargin(0)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
         self.comboBox = QtGui.QComboBox(self.verticalLayoutWidget_3)
         font = QtGui.QFont()
@@ -104,10 +108,8 @@ class Ui_Form(object):
         self.gridLayoutWidget.setGeometry(QtCore.QRect(20, 20, 531, 701))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setMargin(0)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.tableView = QtGui.QTableView(self.gridLayoutWidget)
-        self.tableView.setObjectName(_fromUtf8("tableView"))
-        self.gridLayout.addWidget(self.tableView, 0, 0, 1, 1)
         self.pushButton_8 = QtGui.QPushButton(self.gridLayoutWidget)
         self.pushButton_8.setObjectName(_fromUtf8("pushButton_8"))
         self.gridLayout.addWidget(self.pushButton_8, 0, 1, 1, 1)
@@ -117,6 +119,11 @@ class Ui_Form(object):
         self.pushButton_10 = QtGui.QPushButton(self.gridLayoutWidget)
         self.pushButton_10.setObjectName(_fromUtf8("pushButton_10"))
         self.gridLayout.addWidget(self.pushButton_10, 1, 0, 1, 1)
+        self.tableWidget = QtGui.QTableWidget(self.gridLayoutWidget)
+        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.gridLayout.addWidget(self.tableWidget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.page_4)
         self.page_5 = QtGui.QWidget()
         self.page_5.setObjectName(_fromUtf8("page_5"))
