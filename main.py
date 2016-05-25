@@ -20,7 +20,9 @@ def main():
     ui.setupUi(w)
     
     control = Control(ui)
-    
+    msg=QtGui.QMessageBox()
+    msg.setText(u'Результаты помещены в файл res.txt и загружены в облако DropBox')
+    msg.exec_()
     w.show()
     
     
