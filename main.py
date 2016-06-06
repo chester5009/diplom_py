@@ -13,7 +13,7 @@ def clicked(ui):
 
 def main():
     print sys.getdefaultencoding()
-    drop=DboxControls(1)
+    
     app = QtGui.QApplication(sys.argv)
     w = QtGui.QWidget()
     ui = Ui_Form()

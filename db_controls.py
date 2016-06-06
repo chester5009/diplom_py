@@ -45,5 +45,17 @@ class DboxControls:
             print "Deleted ",name
         except:
             print "Error delete"
+    
+    def download(self,name,outName):
+        try:
+            
+            file,metadata=self.client.get_file_and_metadata(name)
+            out=open('assets/'+outName,'wb')
+            out.write(file.read())
+            out.close()
+            return True
+        except:  
+            return False
+            
         
     

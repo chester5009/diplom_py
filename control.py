@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from PyQt4 import QtGui, QtCore
 from mannwhithney import MannWhithney
+from db_controls import DboxControls
 class Control:
 
     def __init__(self, ui):
@@ -9,6 +10,7 @@ class Control:
         self.current_method = 0
         self.setSignalsButtons()
         self.ui.stackedWidget.setCurrentIndex(0)
+        self.drop = DboxControls(1)
     
     def mannClick(self):
         self.current_method = 1
@@ -50,20 +52,64 @@ class Control:
         pass
     
     def CalculateButtonclick(self):
-        data=self.getDataFromTable(0, 1)
+        data = self.getDataFromTable(0, 1)
         self.CalculateAction(data)
         pass
     
-    def CalculateAction(self,data):
-        if self.current_method==1:
-            mann=MannWhithney(data)
+    def getTables(self, mann):
+        file = open("assets/mann005", 'r')
+        data001 = []
+        data005 = []
+        for line in file:
+            oneStr = line.split(';')
+            oneDataStr = []
+            for j in oneStr:
+                if j == ' ' or j == '-':
+                  oneDataStr.append(-1)
+                else: oneDataStr.append(j) 
+            data005.append(oneDataStr)
+        
+        file = open("assets/mann001", 'r')
+        for line in file:
+            oneStr = line.split(';')
+            oneDataStr = []
+            for j in oneStr:
+                if j == '' or j == '-' or j==' ':
+                  oneDataStr.append(-1)
+                else: oneDataStr.append(j) 
+            data001.append(oneDataStr)
+        
+        mann.setTable(data001,data005)
+        
+    
+    def CalculateAction(self, data):
+        if self.current_method == 1:
+            file005 = self.drop.download("mann005", "mann005")
+            file001 = self.drop.download("mann001", "mann001")
+            if file005 == True and file001 == True:    
+                msg = QtGui.QMessageBox()
+                msg.setText(u'Таблицы критических значений загружены из DropBox')
+                msg.exec_()
+            mann = MannWhithney(data)
+            self.getTables(mann)
             mann.makeEntyties(mann.data)
+ 
             mann.sort()
             mann.setRanks()
             mann.showEnts()
-            
-            #print "Mann!",data
+            mann.calculate()
+            mann.printResult()
+            self.writeResults("results.txt", mann)
+            #mann.printTable(mann.data001)
+            #mann.printTable(mann.data005)
+            print mann.getHipotese()
+            self.drop.upload("results.txt")
         pass
+    
+    def writeResults(self,filename,mann):
+        file=open("assets/"+filename,'a')
+        file.write(mann.getHipotese().encode('utf-8').strip())
+        file.close()
     
     def initTable(self, t, rows, cols):
         t.clear()
@@ -76,8 +122,8 @@ class Control:
     def getDataFromTable(self, startCol, finishCol):
         data = []
         countRow = self.ui.tableWidget.rowCount()
-        maxCol=finishCol - startCol + 1;
-        print "size ",startCol," ",maxCol
+        maxCol = finishCol - startCol + 1;
+        print "size ", startCol, " ", maxCol
         for startCol in range(maxCol):
             oneCol = []
             for j in range(countRow): 
